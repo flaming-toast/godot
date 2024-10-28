@@ -134,6 +134,9 @@ def configure(env):
             env.Append(CCFLAGS=["-Oz"])
         env.Append(CPPDEFINES=["NDEBUG"])
         env.Append(CCFLAGS=["-ftree-vectorize"])
+        env.Append(LINKFLAGS=['-Os', '-s'])
+        env.Append(CPPFLAGS=['-Os', '-DNDEBUG', '-ffast-math',
+                         '-funsafe-math-optimizations', '-fomit-frame-pointer'])
     elif env["target"] == "debug":
         env.Append(LINKFLAGS=["-O0"])
         env.Append(CCFLAGS=["-O0", "-g", "-fno-limit-debug-info"])
